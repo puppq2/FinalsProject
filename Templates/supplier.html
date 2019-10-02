@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% block sidecontent %}
+
+<div id="mySidenav" class="sidenav" style="width:18%;max-height:100%;display:flex;flex-direction:column;">
+  <a href="{{ url_for('admin') }}"><h1>Home</h1></a>
+  <a href="{{ url_for('employee') }}">Employee</a>
+  <a href="{{ url_for('item') }}">Items</a>
+  <a href="#">Sales</a>
+  <a href="#">Inventory</a>
+  <a href="{{ url_for('supplier') }}">Supplier</a>
+  <a href="#">Delivery</a>
+</div>
+{% endblock %}
+{% block content %}
+            <div class="container" style="max-height:100%;">
+              <center>
+            <h1>Supplier</h1>
+              </center>
+              <div class="" style="width:100%; display:flex;flex-direction:row;justify-content:space-between;">
+                <div class="">
+                  {{ form.search.label }}&nbsp;{{ form.search }}
+                </div>
+
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#logoutModal" style="margin-bottom:5px;">
+                                          Add Supplier
+                                      </button>
+              </div>
+
+<center>
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center;">Supplier</th>
+                                <th style="text-align:center;">Email Address</th>
+                                <th style="text-align:center;">Contact Number</th>
+                                <th style="text-align:center;" colspan="2">Action</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+            {% for supplier in mySupplier %}
+            <tr>
+
+            <td style="text-align:center; word-break:break-all; width:300px;">  {{ supplier.supplier_name }}</td>
+            <td style="text-align:center; word-break:break-all; width:200px;">  {{ supplier.supplier_email }}</td>
+            <td style="text-align:center; word-break:break-all; width:200px;">  {{ supplier.supplier_contact }}</td>
+            <td><a href="edit.php<?php echo '?id='.$id; ?>" class="btn btn-info">Edit</a> </td>
+            <td><a href="{{ url_for('admin') }}"  data-toggle="modal"  class="btn btn-danger" >Delete </a></td>
+            </tr>
+
+            {% endfor %}
+
+                        </tbody>
+                    </table>
+
+</center>
+<div class="modal hide fade " id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <dv class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="logoutModalLabel">ADD SUPPLIER</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="" method="POST">
+
+                {{ form.supp_id.label(class='col-sm-2 col-form-label') }}
+                {{ form.supp_id(class='form-control') }}
+                <br>
+                {{ form.supp_name.label(class='col-sm-2 col-form-label') }}
+                {{ form.supp_name(class='form-control') }}
+                <br>
+                {{ form.supp_contact.label(class='col-sm-2 col-form-label') }}
+                {{ form.supp_contact(class='form-control') }}
+                <br>
+                {{ form.supp_email.label(class='col-sm-2 col-form-label') }}
+                {{ form.supp_email(class='form-control') }}
+
+              </form>
+            </div>
+            <div class="modal-footer">
+
+                <br>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Add</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <script>
+        document.addEventListener("keyup", function(e){
+            if (document.getElementById("logoutModal").classList.contains("show") && ((e.keyCode == 13) || e.which == 13)) {
+                document.getElementById("logoutButton").click();
+            }
+        });
+    </script>
+{% endblock content %}

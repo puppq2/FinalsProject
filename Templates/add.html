@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="mySidenav" class="sidenav">
+  <a href="{{ url_for('admin') }}"><h1>Home</h1></a>
+  <a href="{{ url_for('employee') }}">Employee</a>
+  <a href="{{ url_for('item') }}">Items</a>
+  <a href="#">Sales</a>
+  <a href="#">Inventory</a>
+  <a href="#">Supplier</a>
+  <a href="#">Delivery</a>
+</div>
+<div class="main">
+  <center>
+<h1>Add Employee</h1>
+<br>
+<br
+<table>
+
+
+{{ form.employeeid.label }}
+{{ form.employeeid }}
+{{ form.fname.label }}
+{{ form.fname }}
+{{ form.lname.label }}
+{{ form.lname }}
+{{ form.email.label }}
+{{ form.email }}
+{{ form.username.label }}
+{{ form.username }}
+{{ form.password.label }}
+{{ form.password }}
+
+<a href="{{ url_for('employee') }}"></a>
+
+</table>
+  </center>
+
+
+</div>
+{% endblock content %}

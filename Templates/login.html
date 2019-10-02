@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        <br>
+        <h1 align='center'>WELCOME</h1>
+        <form align='center' method="POST" action="">
+          {{ form.hidden_tag() }}
+          <table align="Center" height="50" width="350">
+             <tr>
+             <td align="Center">{{form.username.label(class='col-sm-2 col-form-label') }}</td>
+             </tr>
+             <tr>
+             <td>{% if form.username.errors %}
+                {{ form.username(class='form-control') }}
+                {% for error in form.username.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+                {% else %}
+                {{ form.username(class='form-control') }}
+                {% endif %}
+	           </td>
+             </tr>
+             <tr>
+             <td align="Center">{{form.password.label}}</td>
+             </tr>
+             <tr>
+             <td>{% if form.password.errors %}
+                {{ form.password(class='form-control') }}
+                {% for error in form.password.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+                {% else %}
+                {{ form.password(class='form-control') }}
+                {% endif %}
+              </td>
+              </tr>
+          </table>
+          <br>
+          {{ form.submit(class='btn btn-primary btn-lg') }}
+          <br>
+          <br>
+        </form>
+    </body>
+</html>

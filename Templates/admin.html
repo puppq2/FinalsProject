@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block sidecontent %}
+
+<div id="mySidenav" class="sidenav" style="width:18%;max-height:100%;display:flex;flex-direction:column;">
+  <a href="{{ url_for('admin') }}"><h1>Home</h1></a>
+  <a href="{{ url_for('employee') }}">Employee</a>
+  <a href="{{ url_for('item') }}">Items</a>
+  <a href="#">Sales</a>
+  <a href="#">Inventory</a>
+  <a href="{{ url_for('supplier') }}">Supplier</a>
+  <a href="#">Delivery</a>
+</div>
+
+{% endblock %}
+{% block content %}
+            <div class="container" style="max-height:100%;">
+              <center>
+            <h1>FDF AUTO PARTS AND ACCESSORIES</h1>
+            <h3>INVENTORY SYSTEM</h3>
+              </center>
+
+{% endblock content %}

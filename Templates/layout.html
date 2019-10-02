@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <style>
+    body{
+      height: 100% !important;
+      margin: 0;
+      padding: 0;
+      max-height: 100%;
+    }
+    .sidenav h1{
+      font-size:22px;
+      color:cyan;
+    }
+    /* The sidenav */
+.sidenav {
+  /* height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0; */
+  background-color: #111;
+  padding-top: 20px;
+}
+/* The navigation menu links */
+.sidenav a {
+padding: 8px 8px 8px 32px;
+text-decoration: none;
+font-size: 25px;
+color: #818181;
+display: block;
+transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+color: #f1f1f1;
+}
+
+    </style>
+    <meta charset="utf-8">
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>Home</title>
+    {% endif %}
+    {{
+      bootstrap.load_css()
+    }}
+  </head>
+  <body>
+    <div style="display:flex;max-height:100%;">
+    {% block sidecontent %}
+
+    {% endblock %}
+    {% block content %}
+    {% endblock %}
+  </div>
+    {{ bootstrap.load_js() }}
+  </body>
+</html>
